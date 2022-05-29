@@ -1,5 +1,5 @@
 <?php
-
+//done
 include("connection.php");  //establishing connection
 
 $email = $_POST["email"];
@@ -27,5 +27,6 @@ if($num_rows == 0){
 header('Access-control-Allow-Origin:*');
 $json = json_encode($response);
 echo $json;
+
 
 ?>
