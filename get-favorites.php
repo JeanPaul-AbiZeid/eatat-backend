@@ -11,4 +11,18 @@ $array = $query->get_result();
 $num_rows = $array->num_rows;
 
 $result = [];
+
+if ($num_rows == 0) {
+    $response["response"] = "No Favorite Restaurant Yet";
+}else{
+    while($favorites = $array->fetch_assoc()){
+        $result[] = $favorites;
+    }
+    $response["data"] = $result;
+    $response["success"] = true;
+}
+
+header('Access-control-Allow-Origin:*');
+$json = json_encode($response);
+echo $json;
 ?>
