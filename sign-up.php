@@ -18,6 +18,7 @@ $response = [];
 
 if($rows >0){
     $response["response"] = "Email already exists";
+    $response["success"] = false;
 }else{
     $query = $mysqli->prepare("INSERT INTO users(first_name, last_name, email, password,type) VALUES (?, ?, ?, ?, 1)");
     $query->bind_param("ssss", $first_name, $last_name,$email,$password); //this line helps avoid sql injections from hackers
