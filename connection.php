@@ -7,5 +7,4 @@ $db_name = "eatatdb";
 
 $mysqli = new mysqli($host, $db_user, $db_pass, $db_name);
 
-
 ?>
