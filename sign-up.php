@@ -24,6 +24,17 @@ if($rows >0){
     $query->bind_param("ssss", $first_name, $last_name,$email,$password); //this line helps avoid sql injections from hackers
     $query->execute();
     $response["success"] = true;
+
+    //returning the id in response
+    $query = $mysqli->prepare("select id from users where email=?");
+    $query->bind_param("s",$email);
+    $query->execute();
+
+    $query->store_result();
+    $query->bind_result($id);
+    $query->fetch();
+    $response["id"] = $id;
+
 }
 
 echo json_encode($response);
