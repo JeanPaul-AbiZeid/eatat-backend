@@ -8,7 +8,7 @@ if(isset($_GET["restaurant_id"])){
 }
 
 
-$query = $mysqli->prepare("select avg(ratings) from reviews where restaurant_id = ?");
+$query = $mysqli->prepare("select avg(ratings), count(ratings) from reviews where restaurant_id = ?");
 $query->bind_param("s", $restaurant_id);
 $query->execute();
 
