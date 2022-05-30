@@ -1,8 +1,8 @@
 <?php
 include("connection.php");
 
-$user_id = $_GET["user_id"];
-$restaurant_id = $GET["restaurant_id"]
+$user_id = $_POST["user_id"];
+$restaurant_id = $_POST["restaurant_id"];
 
 $query = $mysqli->prepare("INSERT INTO favorites VALUES(?, ?)");
 $query->bind_param("ss", $user_id, $restaurant_id);
