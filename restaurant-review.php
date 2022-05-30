@@ -3,7 +3,7 @@ include("connection.php");
 
 $restaurant_id = $_GET["restaurant_id"];
 
-$query = $mysqli->prepare("select review from reviews where restaurant_id = ?");
+$query = $mysqli->prepare("select review, user_id from reviews where restaurant_id = ?");
 $query->bind_param("s", $restaurant_id);
 $query->execute();
 
