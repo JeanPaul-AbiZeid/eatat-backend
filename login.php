@@ -2,8 +2,17 @@
 
 include("connection.php");  //establishing connection
 
-$email = $_POST["email"];
-$password = hash("sha256", $_POST["password"]);
+if(isset($_POST["email"])){
+    $email = $_POST["email"];
+}else{
+    die("missing user id");
+}
+
+if(isset($_POST["password"])){
+    $password = hash("sha256", $_POST["password"]);
+}else{
+    die("missing user id");
+}
 
 $query = $mysqli->prepare("Select id, type from users where email = ? AND password = ?");
 $query->bind_param("ss", $email, $password);

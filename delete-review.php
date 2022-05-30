@@ -1,8 +1,18 @@
 <?php
 include("connection.php");
 
-$user_id = $_POST["user_id"];
-$restaurant_id = $_POST["restaurant_id"];
+
+if(isset($_POST["user_id"])){
+    $user_id = $_POST["user_id"];
+}else{
+    die("missing user id");
+}
+
+if(isset($_POST["restaurant_id"])){
+    $restaurant_id = $_POST["restaurant_id"];
+}else{
+    die("missing restaurant id");
+}
 
 $query = $mysqli->prepare("delete from reviews where user_id = ? AND restaurant_id = ?");
 $query->bind_param("ss", $user_id, $restaurant_id);

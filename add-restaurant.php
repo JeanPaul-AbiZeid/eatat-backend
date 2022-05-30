@@ -20,7 +20,7 @@ if(isset($_POST["image"])){
 }
 
 if(isset($_POST["avg_cost"])){
-    $average_price = $_POST["avg_cost"];
+    $average_cost = $_POST["avg_cost"];
 }else{
     die("missing average price");
 }

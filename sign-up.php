@@ -1,10 +1,29 @@
 <?php
 include("connection.php");
 
-$first_name = $_POST["first-name"];
-$last_name = $_POST["last-name"];
-$email = $_POST["email"];
-$password = hash("sha256", $_POST["password"]);
+if(isset($_POST["first_name"])){
+    $first_name = $_POST["first_name"];
+}else{
+    die("missing first name");
+}
+
+if(isset($_POST["last_name"])){
+    $last_name = $_POST["last_name"];
+}else{
+    die("missing restaurant id");
+}
+
+if(isset($_POST["email"])){
+    $email = $_POST["email"];
+}else{
+    die("missing email");
+}
+
+if(isset($_POST["password"])){
+    $password = hash("sha256", $_POST["password"]);
+}else{
+    die("missing password");
+}
 
 $query = $mysqli->prepare("select email from users where email=?");
 $query->bind_param("s",$email);

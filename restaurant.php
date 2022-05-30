@@ -1,7 +1,11 @@
 <?php
 include("connection.php");
 
-$id = $_GET["id"];
+if(isset($_GET["id"])){
+    $id = $_GET["id"];
+}else{
+    die("missing restaurant id");
+}
 
 $query = $mysqli->prepare("select * from restaurants where id = ?");
 $query->bind_param("s", $id);
