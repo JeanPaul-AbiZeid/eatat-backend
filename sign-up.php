@@ -1,5 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin: *'); //this removes the error 
 include("connection.php");
 
 $first_name = $_POST["first-name"];

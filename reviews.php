@@ -12,7 +12,6 @@ while($reviews = $array->fetch_assoc()){
     $response[] = $reviews;
 }
 
-header('Access-control-Allow-Origin:*');
 $json = json_encode($response);
 echo $json;
 ?>

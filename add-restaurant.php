@@ -28,7 +28,6 @@ if ($num_rows > 0) {
 }
 
 
-header('Access-control-Allow-Origin:*');
 $json = json_encode($response);
 echo $json;
 ?>

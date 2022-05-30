@@ -1,4 +1,5 @@
 <?php
+header('Access-control-Allow-Origin:*');
 
 $host = "localhost";
 $db_user = "root"; //should be changed

@@ -11,7 +11,6 @@ while($users = $array->fetch_assoc()){
     $response[] = $users;
 }
 
-header('Access-control-Allow-Origin:*');
 $json = json_encode($response);
 echo $json;
 
