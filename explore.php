@@ -10,7 +10,7 @@ $response = [];
 while($restaurant = $array->fetch_assoc()){
     $response[] = $restaurant;
 }
-header('Access-control-Allow-Origin:*');
+
 $json = json_encode($response);
 echo $json;
 
