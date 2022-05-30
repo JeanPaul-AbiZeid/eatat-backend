@@ -18,10 +18,12 @@ $response = [];
 
 if($num_rows == 0){
     $response["response"] = "User Not Found or incorrect password";
+    $response["success"]  = false;
 }else{
     $response["response"] = "Logged in";
     $response["user_id"] = $id;
     $response["type"] = $type;
+    $response["success"]  = true;
 }
 
 header('Access-control-Allow-Origin:*');
