@@ -1,7 +1,12 @@
 <?php
 include("connection.php");
 
-$restaurant_id = $_GET["restaurant_id"];
+if(isset($_GET["restaurant_id"])){
+    $restaurant_id = $_GET["restaurant_id"];
+}else{
+    die("missing restaurant id");
+}
+
 
 $query = $mysqli->prepare("select avg(ratings) from reviews where restaurant_id = ?");
 $query->bind_param("s", $restaurant_id);
