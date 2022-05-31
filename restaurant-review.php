@@ -22,7 +22,7 @@ if ($num_rows == 0) {
     while($reviews = $array->fetch_assoc()){
         $response[] = $reviews;
     }
-    $response["success"] = true;
+    //$response["success"] = true;
 }
 $json = json_encode($response);
 echo $json;
