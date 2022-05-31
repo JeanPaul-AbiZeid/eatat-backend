@@ -14,10 +14,17 @@ $query->execute();
 $array = $query->get_result();
 $num_rows = $array->num_rows;
 
-$response = [];
-$restaurant = $array->fetch_assoc();
-$response = $restaurant;
+$result = [];
 
+if ($num_rows == 0) {
+    $response["response"] = "No Reviews Yet";
+}else{
+    while($reviews = $array->fetch_assoc()){
+        $result[] = $reviews;
+    }
+    $response["data"] = $result;
+    $response["success"] = true;
+}
 $json = json_encode($response);
 echo $json;
 ?>
