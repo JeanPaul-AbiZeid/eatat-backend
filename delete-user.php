@@ -2,8 +2,8 @@
 include("connection.php");
 
 
-if(isset($_POST["user_id"])){
-    $user_id = $_POST["user_id"];
+if(isset($_GET["user_id"])){
+    $user_id = $_GET["user_id"];
 }else{
     die("missing user id");
 }
