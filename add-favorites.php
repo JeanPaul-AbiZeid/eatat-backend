@@ -13,13 +13,24 @@ if(isset($_POST["restaurant_id"])){
     die("missing restaurant id");
 }
 
-$query = $mysqli->prepare("INSERT INTO favorites(user_id, restaurant_id) VALUES(?, ?)");
+$query = $mysqli->prepare("select * from favorites where user_id = ? and restaurant_id = ?");
 $query->bind_param("ss", $user_id, $restaurant_id);
 $query->execute();
 
 
+$array = $query->get_result();
+$num_rows = $array->num_rows;
+
 $response = [];
-$response["success"] = true;
+
+if ($num_rows == 0) {
+    $query = $mysqli->prepare("INSERT INTO favorites(user_id, restaurant_id) VALUES(?, ?)");
+    $query->bind_param("ss", $user_id, $restaurant_id);
+    $query->execute();
+    $response["response"] = "added to favorites";
+}else{
+    $response["response"] = "already a favorite";
+}
 
 $json = json_encode($response);
 echo $json;
