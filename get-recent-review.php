@@ -6,7 +6,7 @@ if(isset($_GET["id"])){
 }else{
     die("missing user id");
 }
-$query = $mysqli->prepare("SELECT first_name, last_name, picture, review, ratings, name from reviews join users on users.id = reviews.user_id join restaurants on restaurants.id = reviews.restaurant_id");
+$query = $mysqli->prepare("SELECT first_name, last_name, picture, review, ratings, name from reviews join users on users.id = reviews.user_id join restaurants on restaurants.id = reviews.restaurant_id where is_pending = 0");
 $query->execute();
 
 $array = $query->get_result();
