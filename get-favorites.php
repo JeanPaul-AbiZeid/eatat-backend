@@ -7,23 +7,23 @@ if(isset($_GET["user_id"])){
     die("missing user id");
 }
 
-$query = $mysqli->prepare("select * from restaurants join favorites on favorites.restaurant_id = restaurants.id where favorites.user_id = ?");
+$query = $mysqli->prepare("select *, description from restaurants join favorites on favorites.restaurant_id = restaurants.id where favorites.user_id = ?");
 $query->bind_param("s", $user_id);
 $query->execute();
 
 $array = $query->get_result();
 $num_rows = $array->num_rows;
 
-$result = [];
+$response = [];
 
 if ($num_rows == 0) {
     $response["response"] = "No Favorite Restaurant Yet";
 }else{
     while($favorites = $array->fetch_assoc()){
-        $result[] = $favorites;
+        $response[] = $favorites;
     }
-    $response["data"] = $result;
-    $response["success"] = true;
+    // $response["data"] = $result;
+    // $response["success"] = true;
 }
 
 $json = json_encode($response);
