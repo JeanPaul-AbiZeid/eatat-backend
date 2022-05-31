@@ -13,11 +13,6 @@ if(isset($_POST["description"])){
     die("missing description");
 }
 
-if(isset($_POST["image"])){
-    $image = $_POST["image"];
-}else{
-    die("missing image");
-}
 
 if(isset($_POST["avg_cost"])){
     $average_cost = $_POST["avg_cost"];
@@ -49,9 +44,10 @@ $response = [];
 
 if ($num_rows > 0) {
     $response["response"] = "Restaurant already exists";
+    $response["success"] = false;
 }else{
     $query = $mysqli->prepare("INSERT INTO restaurants(name, description, image, avg_cost, location, category) VALUES(?, ?, ?, ?, ?, ?)");
-    $query->bind_param("ssssss", $name, $description, $image, $average_price, $location, $category);
+    $query->bind_param("ssssss", $name, $description, $image, $average_cost, $location, $category);
     $query->execute();
 
     $response["success"] = true;
